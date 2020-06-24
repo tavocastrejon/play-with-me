@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script>
+var songs;
+        var arrObjectsAudio = [];
+        var keysPressed     = [];
+
+        // Lista de canciones que se van a usar en la pagina web
+        var arrSongs  = ['sonidos/4LLRRS/C4 261,626.wav',   // Sonido #0
+                         'sonidos/4LLRRS/sC4 277,183.wav',   // Sonido #1
+                         'sonidos/4LLRRS/D4 293,665.wav',   // Sonido #2
+                         'sonidos/4LLRRS/sD4 311,127.wav',   // Sonido #3
+			 'sonidos/4LLRRS/E4 329,628.wav',   // Sonido #4
+			 'sonidos/4LLRRS/F4 349,228.wav',   // Sonido #5
+			 'sonidos/4LLRRS/sF4 369,994.wav',   // Sonido #6
+			 'sonidos/4LLRRS/G4 391,995.wav',   // Sonido #7
+			 'sonidos/4LLRRS/sG4 415,305.wav',   // Sonido #8
+			 'sonidos/4LLRRS/A4 440,000.wav',   // Sonido #9
+			 'sonidos/4LLRRS/sA4 466,164.wav',  // Sonido #10
+			 'sonidos/4LLRRS/B4 493,883.wav',  // Sonido #11
+			];
+
+        // Crear arreglo de objetos para cada cancion que se va a usar
+        for(song in arrSongs) {
+            arrObjectsAudio[song] = new Audio(arrSongs[song]);
+        }
+
+        // Funcion para registrar que se precione la tecla shift
+        document.addEventListener('keydown', (event) => {
+            keysPressed[event.key] = true;
+        });
+
+        // Eliminar arreglo que registra tecla shift para reiniciar arreglo
+        document.addEventListener('keyup', (event) => {
+            delete this.keysPressed[event.key];
+        });
+document.addEventListener('keyup', function (event) {
+            event = event || window.event;
+            var key = event.key || event.which || event.keyCode;
+
+           // Registro #1
+            if (key == 'q') {
+                audioPlayer(arrObjectsAudio[0], 'Q');
+            }
+
+            // Registro #2
+            if (key == 'w') {
+                audioPlayer(arrObjectsAudio[1], 'W');
+            }
+
+            // Registro #3
+            if (key == 'e') {
+                audioPlayer(arrObjectsAudio[2], 'E');
+            }
+
+           
+            if (key == 'r') {
+                audioPlayer(arrObjectsAudio[3], 'R');
+            }
+ 		if (key == 'a') {
+                audioPlayer(arrObjectsAudio[4], 'A');
+            }
+		 if (key == 's') {
+                audioPlayer(arrObjectsAudio[5], 'S');
+            }
+ 		if (key == 'd') {
+                audioPlayer(arrObjectsAudio[6], 'D');
+            }
+ 		if (key == 'f') {
+                audioPlayer(arrObjectsAudio[7], 'F');
+            }
+		if (key == 'z') {
+                audioPlayer(arrObjectsAudio[8], 'Z');
+            }
+ 		if (key == 'x') {
+                audioPlayer(arrObjectsAudio[9], 'X');
+            }
+             	if (key == 'c') {
+                audioPlayer(arrObjectsAudio[10], 'C');
+            }
+ 		if (key == 'v') {
+                audioPlayer(arrObjectsAudio[11], 'V');
+            }
+        });
+
+        // Funcion para reproducir sonidos segun tecla y sonido elegido
+        function audioPlayer(audiofile, key) {
+            document.addEventListener('keydown', function (event) {
+                event = event || window.event;
+
+                if (!keysPressed['Shift'] && event.key == key.toLowerCase()) {
+                    audiofile.play();
+                }
+                else if(keysPressed['Shift'] && event.key == key && !audiofile.paused) {
+                    audiofile.pause();
+                    audiofile.currentTime = 0;
+                }
+            });
+
+            audiofile.addEventListener('ended', function () {
+                audiofile.play();
+            });
+        }
+
+</script>
+
+<title>
+play with ME
+</title>
+
+</head>
+
+<body text="B01388">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center><img src="personajes/tecla.png"></center>
+<center>1</center><br>
+
+<center><table border="1">
+
+<tr><td> press </td><td>q</td><td>w</td><td>e</td><td>r</td>
+	<td>a</td><td>s</td><td>d</td><td>f</td><td>z</td><td>x</td>
+	<td>c</td><td>v</td><td> to activate and then to play</td></tr>
+<tr><td> press shift + </td><td>q</td><td>w</td><td>e</td><td>r</td>
+	<td>a</td><td>s</td><td>d</td><td>f</td><td>z</td><td>x</td>
+	<td>c</td><td>v</td><td> to pause </td></tr>
+<table></center>
+
+<br><br><br>
+<center><a href="menu.html">b A C K</a></center>
+
+</body>
+</html>
